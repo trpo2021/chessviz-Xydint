@@ -1,5 +1,6 @@
 #pragma once
 #include <Figure.hpp>
+#include <iostream>
 #include <string>
 
 typedef std::pair<char, int> pci;

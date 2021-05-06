@@ -5,7 +5,7 @@ Step parse_notation(string notation)
     Step step;
 
     if (notation != "0-0-0" && notation != "0-0") {
-        if (string("KQRBN").find(notation[0]) != -1)
+        if (string("KQRBN").find(notation[0]) != -1) {
             switch (notation[0]) {
             case 'K':
                 step.piece = Figure::Piece::King;
@@ -23,16 +23,15 @@ Step parse_notation(string notation)
                 step.piece = Figure::Piece::Knight;
                 break;
             }
-        else {
+        } else {
             step.piece = Figure::Piece::Pawn;
             notation.insert(0, "P");
         }
     }
-    step.first.second = notation[1];
-    step.first.first = (int)notation[2] - 49;
+    step.first.first = notation[1];
+    step.first.second = (int)notation[2] - 49;
 
-    step.last.first = (int)notation[5] - 49;
-    step.last.second = notation[4];
-
+    step.last.first = notation[4];
+    step.last.second = (int)notation[5] - 49;
     return step;
 }

@@ -44,31 +44,32 @@ void ChessDesk::add_desk_in_file(string notation, ofstream& file)
         file << R"!(</tr>)!" << '\n';
     }
     file << R"!(</table>)!";
-    file.close();
 }
 
-void ChessDesk::move_figure(char x1, int y1, char x2, char y2, Figure f)
+void ChessDesk::move_figure(char x1, int y1, char x2, char y2, Figure::Piece f)
 {
     if (!(x1 >= 'a' && x1 <= 'h')) {
-        cout << "error" << endl;
+        cout << "err" << endl;
         throw 1;
     }
     if (!(x2 >= 'a' && x2 <= 'h')) {
         cout << "error" << endl;
-        throw 1;
+        throw 2;
     }
-    if (!(y1 >= 0 && x1 < 8)) {
+    if (!(y1 >= 0 && y1 < 8)) {
         cout << "error" << endl;
-        throw 1;
+        throw 3;
     }
-    if (!(y2 >= 0 && x2 < 8)) {
+    if (!(y2 >= 0 && y2 < 8)) {
         cout << "error" << endl;
-        throw 1;
+        throw 4;
     }
     if (f != desk[x1][y1].get_piece()) {
-        cout << "error" << endl;
-        throw 1;
+        cout << "error" << f << " " << desk[x1][y1].get_piece() << endl;
+        cout << x1 << " " << y1 << endl;
+        cout << x2 << " " << y2 << endl << endl;
+        throw 5;
     }
     desk[x2][y2] = desk[x1][y1];
-    desk[x1][x2] = Figure(Figure::Not, Figure::None);
+    desk[x1][y1] = Figure(Figure::Not, Figure::None);
 }

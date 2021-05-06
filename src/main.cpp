@@ -1,5 +1,5 @@
 #include <ChessDesk.hpp>
-
+#include <Chesslib.hpp>
 #include <fstream>
 #include <iostream>
 #include <list>
@@ -10,8 +10,8 @@ using namespace std;
 int main(int argc, char** argv)
 {
     ChessDesk desk;
+    Step step;
     string input;
-    string save_path;
     fstream file;
     list<string> notations;
 
@@ -35,6 +35,7 @@ int main(int argc, char** argv)
         if (file.eof())
             break;
     }
+    notations.pop_back();
     file.close();
 
     ofstream fout;
@@ -88,8 +89,23 @@ int main(int argc, char** argv)
 <body>
 )!";
     desk.add_desk_in_file("zxcv", fout);
-    //Место для логики
 
+    for (auto it = notations.begin(); it != notations.end(); ++it) {
+        step = parse_notation(*it);
+        try {
+            desk.move_figure(
+                    step.first.first,
+                    step.first.second,
+                    step.last.first,
+                    step.last.second,
+                    step.piece);
+        } catch (const int a) {
+            cout << a << endl;
+        }
+
+        desk.add_desk_in_file(*it, fout);
+    }
+    cout << 10;
     fout << "\n</body>\n</html>";
     fout.close();
 }
