@@ -7,7 +7,7 @@ typedef std::pair<char, int> pci;
 using namespace std;
 
 struct Step {
-    char piece;
+    Figure::Piece piece;
     pci first;
     pci last;
 };

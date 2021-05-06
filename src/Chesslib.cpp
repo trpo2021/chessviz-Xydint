@@ -6,9 +6,25 @@ Step parse_notation(string notation)
 
     if (notation != "0-0-0" && notation != "0-0") {
         if (string("KQRBN").find(notation[0]) != -1)
-            step.piece = notation[0];
+            switch (notation[0]) {
+            case 'K':
+                step.piece = Figure::Piece::King;
+                break;
+            case 'Q':
+                step.piece = Figure::Piece::Queen;
+                break;
+            case 'R':
+                step.piece = Figure::Piece::Rook;
+                break;
+            case 'B':
+                step.piece = Figure::Piece::Bishop;
+                break;
+            case 'N':
+                step.piece = Figure::Piece::Knight;
+                break;
+            }
         else {
-            step.piece = 'P';
+            step.piece = Figure::Piece::Pawn;
             notation.insert(0, "P");
         }
     }

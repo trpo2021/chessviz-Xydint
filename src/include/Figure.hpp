@@ -8,6 +8,7 @@ public:
     Figure();
     Figure(Color, Piece);
     std::string get_css_class();
+    Piece get_piece();
 
 private:
     Color color;

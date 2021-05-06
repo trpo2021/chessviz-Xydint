@@ -40,7 +40,10 @@ std::string Figure::get_css_class()
     }
     return res;
 }
-
+Figure::Piece Figure::get_piece()
+{
+    return piece;
+}
 Figure::Figure()
 {
 }
