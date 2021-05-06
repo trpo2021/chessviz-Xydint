@@ -1,3 +1,4 @@
+#pragma once
 #include <Figure.hpp>
 #include <fstream>
 #include <map>
