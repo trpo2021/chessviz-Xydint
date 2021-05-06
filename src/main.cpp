@@ -37,12 +37,11 @@ int main(int argc, char** argv)
     }
     file.close();
 
-    file.open("./chess.html", fstream::out);
-    if (!file.is_open()) {
-        cout << "err";
+    ofstream fout;
+    fout.open("./chess.html");
+    if (!fout.is_open())
         return 1;
-    }
-    file << R"!(<!DOCTYPE html>
+    fout << R"!(<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -88,9 +87,9 @@ int main(int argc, char** argv)
 </head>
 <body>
 )!";
-    desk.add_desk_in_file("zxcv", file);
+    desk.add_desk_in_file("zxcv", fout);
     //Место для логики
 
-    file << "\n</body>\n</html>";
-    file.close();
+    fout << "\n</body>\n</html>";
+    fout.close();
 }

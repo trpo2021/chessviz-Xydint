@@ -8,7 +8,7 @@ using namespace std;
 class ChessDesk {
 public:
     ChessDesk();
-    void add_desk_in_file(string notation, fstream& file);
+    void add_desk_in_file(string notation, ofstream& file);
 
 protected:
     map<char, Figure[8]> desk;

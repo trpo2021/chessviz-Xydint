@@ -28,7 +28,7 @@ ChessDesk::ChessDesk()
     desk['h'][0] = Figure(Figure::White, Figure::Rook);
 }
 
-void ChessDesk::add_desk_in_file(string notation, fstream& file)
+void ChessDesk::add_desk_in_file(string notation, ofstream& file)
 {
     file << R"!(<table class="chessboard">
     <caption>)!"
