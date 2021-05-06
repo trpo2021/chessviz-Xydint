@@ -1,6 +1,5 @@
 name: Build
 
-
 on: push
 
 jobs:
@@ -9,12 +8,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
 
       - name: Check codestyle
-        run: git ls-files *.{c,h} | xargs clang-format -i && git diff --exit-code
+        run: git ls-files *.{cpp,hpp} | xargs clang-format -i && git diff --exit-code
 
-      - name: Test application
-        run: make test
-
-      - name: Build application
-        run: make
+      - name: CMake build 
+        run: cmake -S . -B build/
+      
+      - name: Build app and test
+        run: cmake --build build/
+      
+      - name: Run test
+        run: ./build/test_list
