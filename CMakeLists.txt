@@ -24,8 +24,10 @@ test/test_list.cpp
 add_library(chesslib 
 src/Figure.cpp
 src/ChessDesk.cpp
+src/Chesslib.cpp
 ${include_path}/Figure.hpp
 ${include_path}/ChessDesk.hpp
+${include_path}/Chesslib.hpp
 )
 
 #Adding main source to test target 
